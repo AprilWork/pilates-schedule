@@ -24,7 +24,7 @@
   <div class="container mtb">
     <div class="row">
       <div class="col-lg-8">
-        <h4>Just Get In Touch!</h4>
+        <h4>Welcome to Happy Heart studio!</h4>
         <div class="hline"></div>
         <div class="col-md-4 col-md-offset-4">
          <br/> 
@@ -74,7 +74,7 @@
           <div class="error-message"></div>
             
           <div class="form-send">
-            <input type="hidden" name="action_" value="signin">
+            <input type="hidden" name="action_" value="loginSubmit">
             <button type="submit" class="btn btn-theme btn-white mt30">LOG IN</button>
           </div>
           

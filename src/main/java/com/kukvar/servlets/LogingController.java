@@ -34,8 +34,6 @@ public class LogingController extends HttpServlet {
 			response.sendRedirect("login.jsp");
 			break;
 		case "register" :
-			//String button = request.getParameter("email");
-			//System.out.println("value : "+button);
 			response.sendRedirect("register.jsp");
 			break;
 		case "sign_with_google": {
@@ -62,7 +60,7 @@ public class LogingController extends HttpServlet {
 			register(request,response);
 			break;
 		}		
-		case "signin": {
+		case "loginSubmit": {
 			signin(request,response);
 			break;
 		}
