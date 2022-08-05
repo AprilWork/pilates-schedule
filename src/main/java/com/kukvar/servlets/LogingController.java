@@ -25,7 +25,7 @@ public class LogingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-		String action = request.getParameter("_action");
+		String action = request.getParameter("action");
 		switch (action) {
 		case "logout" :
 			logout(request,response);
@@ -54,14 +54,14 @@ public class LogingController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String action = request.getParameter("action_");
+		String action = request.getParameter("action");
 		switch (action) {
 		case "register": {
 			register(request,response);
 			break;
 		}		
 		case "loginSubmit": {
-			signin(request,response);
+			authenticate(request,response);
 			break;
 		}
 		default:
@@ -78,19 +78,17 @@ public class LogingController extends HttpServlet {
 		Customers customer = new Customers( email, name, password);
 			try {
 				new UsersDAO().addCustomersDetails(customer);
-				signin(request,response);
+				authenticate(request,response);
 			} catch (Exception e) {
 				System.out.println(e.toString());
 				response.sendRedirect("login.jsp");
 			}
 	}
 
-	private void signin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		System.out.println("email: "+email);
-		System.out.println("password : "+password);
+		final String email = request.getParameter("email");
+		final String password = request.getParameter("password");
 		
 		if(! new UsersDAO().isExisted(email)) {
 			response.sendRedirect("login.jsp");
