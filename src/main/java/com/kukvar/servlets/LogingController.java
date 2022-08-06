@@ -24,27 +24,29 @@ public class LogingController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
-		String action = request.getParameter("_action");
-		switch (action) {
-		case "logout" :
-			logout(request,response);
-			break;
-		case "login" :
-			response.sendRedirect("login.jsp");
-			break;
-		case "register" :
-			//String button = request.getParameter("email");
-			//System.out.println("value : "+button);
-			response.sendRedirect("register.jsp");
-			break;
-		case "sign_with_google": {
-			response.sendRedirect("login.jsp");
-			break;
+		String action = request.getParameter("action");
+		try {
+			switch (action) {
+			case "logout" :
+				logout(request,response);
+				break;
+			case "login" :
+				response.sendRedirect("login.jsp");
+				break;
+			case "register" :
+				response.sendRedirect("register.jsp");
+				break;
+			case "sign_with_google": {
+				response.sendRedirect("login.jsp");
+				break;
+			}
+			default:
+				homePage(request,response);
+			}			
+		} catch (Exception e) {
+			errorPage(request,response);
 		}
-		default:
-			response.sendRedirect("index.jsp");
-		}
+
 	}
 
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -56,14 +58,14 @@ public class LogingController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String action = request.getParameter("action_");
+		String action = request.getParameter("action");
 		switch (action) {
 		case "register": {
 			register(request,response);
 			break;
 		}		
-		case "signin": {
-			signin(request,response);
+		case "loginSubmit": {
+			authenticate(request,response);
 			break;
 		}
 		default:
@@ -80,19 +82,17 @@ public class LogingController extends HttpServlet {
 		Customers customer = new Customers( email, name, password);
 			try {
 				new UsersDAO().addCustomersDetails(customer);
-				signin(request,response);
+				authenticate(request,response);
 			} catch (Exception e) {
 				System.out.println(e.toString());
 				response.sendRedirect("login.jsp");
 			}
 	}
 
-	private void signin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		System.out.println("email: "+email);
-		System.out.println("password : "+password);
+		final String email = request.getParameter("email");
+		final String password = request.getParameter("password");
 		
 		if(! new UsersDAO().isExisted(email)) {
 			response.sendRedirect("login.jsp");
@@ -110,6 +110,15 @@ public class LogingController extends HttpServlet {
 		}		
 	}
 	
+	protected void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//request.setAttribute("title", "Home page");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}	
+	
+	protected void errorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "Error page");
+		request.getRequestDispatcher("error.jsp").forward(request, response);
+	}		
 	
 }
 

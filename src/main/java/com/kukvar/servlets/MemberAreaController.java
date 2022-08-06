@@ -30,10 +30,6 @@ public class MemberAreaController extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		switch (action) {
-		case "destroy":
-			request.getSession().invalidate();		
-			response.sendRedirect("login.jsp");
-			break;
 
 		default:
 			break;
