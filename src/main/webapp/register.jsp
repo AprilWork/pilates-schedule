@@ -24,7 +24,7 @@
         <div class="hline"></div>
 			<p></p>
 			<!-- Register Form -->
-        <form class="form white-text" action="<%= request.getContextPath()%>/login?action_=register" method="POST">
+        <form class="form white-text" action="<%= request.getContextPath()%>/login?action=register" method="POST">
 				
 				<div class="form-group">
 					<label for="femail">FULL NAME:</label> 

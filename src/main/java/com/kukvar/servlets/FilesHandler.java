@@ -20,11 +20,10 @@ import com.kukvar.hibernate.entity.Files;
 @WebServlet("/FilesHandler")
 public class FilesHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	//public String path = "c:/images/";
+	//public String path = "c:/images/"; 
 	public String assetsImagePath = "assets/img/uploaded/";
-	public String realPath = "C:/Users/irade/git/Booking/pilates/src/main/webapp/";
-	public String path = "C:/Users/irade/git/Booking/pilates/src/main/webapp/assets/img/uploaded/";
+	public String realPath = "C:/Users/irade/git/development/PilatesProject/pilates/src/main/webapp/";
+	public String path = "C:/Users/irade/git/development/PilatesProject/pilates/src/main/webapp/assets/uploaded/";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

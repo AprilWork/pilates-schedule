@@ -16,13 +16,23 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class TeamMemberFilter
  */
-@WebFilter(dispatcherTypes = {
-				DispatcherType.REQUEST, 
-				DispatcherType.FORWARD, 
-				DispatcherType.INCLUDE, 
-				DispatcherType.ERROR
-		}
-					, urlPatterns = { "/TeamMemberFilter" }, servletNames = { "GroupsHandler" })
+
+@WebFilter(//dispatcherTypes = {
+				//DispatcherType.REQUEST 
+				//DispatcherType.FORWARD 
+				//DispatcherType.INCLUDE 
+				//DispatcherType.ERROR
+		//},
+					 urlPatterns = { 
+							//"/classes"
+							//"/action?=createGroup", 
+							//"/action?=listingGroups" 
+							//"/classes?action=filesUpload",
+							//"/classes?action=deleteGroup",
+							//"/classes?action=updateGroup"
+							}
+							//servletNames = {"/classes" }
+					 )		
 public class TeamMemberFilter extends HttpFilter implements Filter {
        
     /**
@@ -46,7 +56,9 @@ public class TeamMemberFilter extends HttpFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpServletRequest request = (HttpServletRequest) req;
-		
+		System.out.println("I am in filter...");
+		String info = request.getQueryString();
+		System.out.println("info="+info);
 		if (request.getSession().getAttribute("User") == null) {
 			response.sendRedirect(request.getContextPath()+"/login?action=login");
 		} else {
