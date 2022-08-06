@@ -42,7 +42,7 @@ public class GroupsHandler extends HttpServlet {
 		String action = request.getParameter("action");
 		switch (action) {
 		case "viewGroups": {
-			listingGroups(request, response);
+			viewGroups(request, response);
 			break;
 		}
 		case "createGroup": {
@@ -74,7 +74,7 @@ public class GroupsHandler extends HttpServlet {
 		int groupId = Integer.parseInt(request.getParameter("groupId"));
 		Group file = new GroupsDAO().getGroup(groupId);
 		new GroupsDAO().deleteGroup(groupId);	
-		listingGroups(request, response);
+		viewGroups(request, response);
 	}
 
 	private void listingGroupsForEditing(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -85,7 +85,7 @@ public class GroupsHandler extends HttpServlet {
 		
 	}
 
-	private void listingGroups(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void viewGroups(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Group> groups = new GroupsDAO().listGroups();
 		request.setAttribute("groups", groups);
 		request.setAttribute("path", assetsImagePath);

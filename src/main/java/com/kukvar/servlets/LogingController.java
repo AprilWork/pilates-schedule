@@ -24,25 +24,29 @@ public class LogingController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
 		String action = request.getParameter("action");
-		switch (action) {
-		case "logout" :
-			logout(request,response);
-			break;
-		case "login" :
-			response.sendRedirect("login.jsp");
-			break;
-		case "register" :
-			response.sendRedirect("register.jsp");
-			break;
-		case "sign_with_google": {
-			response.sendRedirect("login.jsp");
-			break;
+		try {
+			switch (action) {
+			case "logout" :
+				logout(request,response);
+				break;
+			case "login" :
+				response.sendRedirect("login.jsp");
+				break;
+			case "register" :
+				response.sendRedirect("register.jsp");
+				break;
+			case "sign_with_google": {
+				response.sendRedirect("login.jsp");
+				break;
+			}
+			default:
+				homePage(request,response);
+			}			
+		} catch (Exception e) {
+			errorPage(request,response);
 		}
-		default:
-			response.sendRedirect("index.jsp");
-		}
+
 	}
 
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -106,6 +110,15 @@ public class LogingController extends HttpServlet {
 		}		
 	}
 	
+	protected void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//request.setAttribute("title", "Home page");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}	
+	
+	protected void errorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "Error page");
+		request.getRequestDispatcher("error.jsp").forward(request, response);
+	}		
 	
 }
 

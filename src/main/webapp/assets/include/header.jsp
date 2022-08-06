@@ -46,14 +46,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index.jsp">HAPPY HEART</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}">HAPPY HEART</a>
       </div>
       <div class="navbar-collapse collapse navbar-right">
         <ul class="nav navbar-nav">
-          <li><a href="index.jsp">HOME</a></li>
-          <li class="active"><a href="about.jsp">ABOUT</a></li>
-          <li><a href="contact.jsp">CONTACT</a></li>
-          <li><a href="${pageContext.request.contextPath}/classes?action=viewGroups">CLASSES</a></li>
+          <li><a href="${pageContext.request.contextPath}">HOME</a></li>
+          <li class="active"><a href="${pageContext.request.contextPath}/user?action=about">ABOUT</a></li>
+          <li><a href="${pageContext.request.contextPath}/user?action=contact">CONTACT</a></li>
+          <li><a href="${pageContext.request.contextPath}/user?action=viewGroups">CLASSES</a></li>
        
 <%@ page import="com.kukvar.model.User" %>
 
