@@ -20,9 +20,9 @@ public class SiteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//public String path = "c:/images/"; 
 	public String assetsImagePath = "assets/img/uploaded/";
-	public String realPath = "C:/Users/irade/git/Booking/pilates/src/main/webapp/";
-	public String path = "C:/Users/irade/git/Booking/pilates/src/main/webapp/assets/img/uploaded/";
-     
+	public String realPath = "C:/Users/irade/git/development/PilatesProject/pilates/src/main/webapp/";
+	public String path = "C:/Users/irade/git/development/PilatesProject/pilates/src/main/webapp/assets/uploaded/";
+	
 	
 	
     /**

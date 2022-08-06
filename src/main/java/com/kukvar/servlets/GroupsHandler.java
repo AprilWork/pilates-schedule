@@ -26,10 +26,10 @@ import com.kukvar.hibernate.entity.Group;
 public class GroupsHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//public String path = "c:/images/"; 
-	public final String assetsImagePath = "assets/img/uploaded/";
-	public final String realPath = "C:/Users/irade/git/Booking/pilates/src/main/webapp/";
-	public final String path = "C:/Users/irade/git/Booking/pilates/src/main/webapp/assets/img/uploaded/";
-
+	public String assetsImagePath = "assets/img/uploaded/";
+	public String realPath = "C:/Users/irade/git/development/PilatesProject/pilates/src/main/webapp/";
+	public String path = "C:/Users/irade/git/development/PilatesProject/pilates/src/main/webapp/assets/uploaded/";
+	
     public GroupsHandler() {
         super();
         // TODO Auto-generated constructor stub
