@@ -21,31 +21,32 @@
    CONTACT FORMS
    ***************************************************************************************************************** -->
 
-  <div class="container mtb">
+  <div class="container mt">
     <div class="row">
       <div class="col-lg-8">
-        <h4>Just Get In Touch!</h4>
-        <div class="hline"></div>
-        <div class="col-md-4 col-md-offset-4">
-         <br/> 
+ <!-- FORM SIGNIN WITH GOOGLE --> 
         <div class="row">
         <form class="form white-text" action="<%= request.getContextPath()%>/login" method="get">
           <div class="form-send">
-            <input type="hidden" name="_action" value="sign_with_google">
+            <input type="hidden" name="action" value="sign_with_google">
             <button type="submit" name="google" class="btn btn-theme btn-white mt30"  >Sign in with Google</button>
           </div>          
         </form>
-        </div>
+        </div>  
+<!-- FORM SIGNIN WITH FACEBOOK -->        
         <div class="row">
          <form class="form white-text" action="<%= request.getContextPath()%>/login" method="get">
           <div class="form-send">
-            <input type="hidden" name="_action" value="sign_with_facebook">
+            <input type="hidden" name="action" value="sign_with_facebook">
             <button type="submit" name="facebook" class="btn btn-theme btn-white mt30">Sign in with Facebook</button>
           </div>  
         </form> 
         </div>      
-        <br/> 
-        <form class="form white-text" action="<%= request.getContextPath()%>/login?action_=signin" method="POST">
+        <div class="hline"></div>
+        <br/>
+
+<!-- FORM SIGNIN WITH PILATES -->        
+        <form class="form white-text" action="<%= request.getContextPath()%>/login?action=loginSubmit" method="POST">
 
                
           <div class="form-group">
@@ -74,7 +75,7 @@
           <div class="error-message"></div>
             
           <div class="form-send">
-            <input type="hidden" name="action_" value="signin">
+            <input type="hidden" name="action" value="loginSubmit">
             <button type="submit" class="btn btn-theme btn-white mt30">LOG IN</button>
           </div>
           
@@ -82,7 +83,7 @@
         </div>
         <br/>
           
-      </div>
+      
   </div>
 </div>
 
