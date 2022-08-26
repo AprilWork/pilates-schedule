@@ -76,8 +76,8 @@ public class LogingController extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println("new Customer : "+name+", "+email);
-		Customers customer = new Customers( email, name, password);
+		System.out.println("new Customer : "+email);
+		Customers customer = new Customers( email, password, "1112223334");
 			try {
 				new UsersDAO().addCustomersDetails(customer);
 				signin(request,response);

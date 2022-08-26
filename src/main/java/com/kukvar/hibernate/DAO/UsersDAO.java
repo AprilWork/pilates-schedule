@@ -25,17 +25,16 @@ public class UsersDAO {
 	public List<Customers> listCustomers() {
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
-		List<Customers> customer = session.createQuery("from users_view").getResultList();
+		List<Customers> customer = session.createQuery("from users").getResultList();
 		//session.getTransaction().commit();
 		return customer;
 	}	
 	
-	public void updateInformation(int id, String email, String username) {
+	public void updateInformation(int id, String email) {
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
 		Customers customer = session.get(Customers.class, id);
 		customer.setEmail(email);
-		customer.setUsername(username);
 		session.getTransaction().commit();
 	}	
 	

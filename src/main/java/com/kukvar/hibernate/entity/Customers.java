@@ -15,19 +15,24 @@ public class Customers {
 	private int id;
 	@Column(name="email")
 	private String email;	
-	@Column(name="username")
-	private String username;	
+	//@Column(name="username")
+	//private String username;	
 	@Column(name="password")
 	private String password;
+	@Column(name="phone")
+	private String phone;	
 	
 	public Customers() {	}
 
-	public Customers(String email, String username, String password) {
+
+	public Customers(String email, String password, String phone) {
 		super();
 		this.email = email;
-		this.username = username;
 		this.password = password;
+		this.phone = phone;
 	}
+
+
 
 	public String getEmail() {
 		return email;
@@ -37,12 +42,17 @@ public class Customers {
 		this.email = email;
 	}
 
-	public String getUsername() {
-		return username;
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	protected String getPassword() {
@@ -59,24 +69,9 @@ public class Customers {
 
 	@Override
 	public String toString() {
-		return "Customers [email=" + email + ", username=" + username + "]";
+		return "Customers [email=" + email  + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(email, id, username);
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Customers other = (Customers) obj;
-		return Objects.equals(email, other.email) && id == other.id && Objects.equals(username, other.username);
-	}
 
 }
